@@ -14,11 +14,11 @@
 from itertools import permutations
 
 letters = ['Т', 'И', 'М', 'О', 'Ф', 'Е', 'Й']
-codes = set()
+code = set()
 
 for p in permutations(letters, 5):
     if p[0] != 'Й' and p[-1] != 'Й' and 'ИЙ' and 'ЙИ' not in ''.join(p):
-        codes.add(''.join(p))
+        code.add(''.join(p))
 
 print(len(codes))
 ```
@@ -27,25 +27,25 @@ print(len(codes))
 ```python
 result = 4 ** 2020 + 2 ** 2017 - 15
 binar = bin(result)[2:]
-count_ones = binar.count('1')
-print(count_ones)
+count_one = binar.count('1')
+print(count_one)
 ```
 #### 1.3
 Найдите среди целых чисел, принадлежащих числовому отрезку $[174457; 174505]$, числа, имеющие ровно два различных натуральных делителя, не считая единицы и самого числа. Для каждого найденного числа запишите эти два делителя в два соседних столбца на экране с новой строки в порядке возрастания произведения этих двух делителей. Делители в строке также должны следовать в порядке возрастания. 
 ```python
-def find_divisors(num):
-    divisors = []
-    for i in range(2, int(num**0.5) + 1):
+def find_delit(num):
+    delit = []
+    for i in range(2, int(num*0.5)):
         if num % i == 0:
-            divisors.append((i, num//i))
-    return divisors
+            delit.append((i, num//i))
+    return delit
 
 
 for num in range(174457, 174506):
-    divisors = find_divisors(num)
-    if len(divisors) == 1:
-        divisor1, divisor2 = divisors[0]
-        print(divisor1, divisor2)
+    delit = find_delit(num)
+    if len(delit) == 2:
+        delit1, delit2 = delit[0]
+        print(delit1, delit2)
 
 
 ```
